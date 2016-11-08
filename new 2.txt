@@ -1,0 +1,53 @@
+<?php
+//Start the session to see if the user is authenticated user.
+session_start();
+//Check if the user is authenticated first. Or else redirect to login page
+if(isset($_SESSION['IS_AUTHENTICATED']) && $_SESSION['IS_AUTHENTICATED'] == 1){
+require('menu.php');
+// Code to be executed when 'Insert' is clicked.
+if ($_POST['submit'] == 'Insert'){
+//validation flag to check that all validations are done
+$validationFlag = true;
+//Check all the required fields are filled
+if(!($_POST['playerNo'] && $_POST['lastName'] && $_POST['initials'] && $_POST['sex']
+&& $_POST['joined'] && $_POST['street'] && $_POST['town'])){
+echo 'All the fields marked as * are compulsary.<br>';
+$validationFlag = false;
+}
+else{
+$playerNo = $_POST['playerNo'];
+$name = "'".$_POST['lastName']."'";
+$initials = "'".$_POST['initials']."'";
+$sex = "'".$_POST['sex']."'";
+$joined = "'".$_POST['joined']."'";
+$street = "'".$_POST['street']."'";
+$town = "'".$_POST['town']."'";
+$dob = "'".$_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day']."'";
+}
+if(!$_POST['month'] || !$_POST['day'] || !$_POST['year'])
+$dob = 'NULL';
+//Check for valid date
+if($dob != 'NULL'){
+if(!checkdate($_POST['month'],$_POST['day'],$_POST['year'])){
+echo $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'] . ' not a
+valid date. Please enter it properly.';
+$validationFlag = false;
+}
+}
+if(!$_POST['houseNo'])
+$houseNo = 'NULL';
+else
+$houseNo = "'".$_POST['houseNo']."'";
+if(!$_POST['postcode'])
+$postcode = 'NULL';
+else
+$postcode = "'".$_POST['postcode']."'";
+if(!$_POST['phoneNo'])
+ $phoneNo = 'NULL';
+ else $phoneNo = "'".$_POST['phoneNo']."'"; 
+ if(!$_POST['leagueNo']) $leagueNo = 'NULL';
+ else $leagueNo = "'".$_POST['leagueNo']."'"; 
+ //If all validations are correct, connect to MySQL and execute the query if($validationFlag){ //Connect to mysql server $link = mysqli_connect('dbms.iiitdmj.ac.in', 'username', 'password'); //Check link to the mysql server if(!$link){ die('Failed to connect to server: ' . mysqli_error()); } //Select database $db = mysqli_select_db($link, 'yourdatabase'); if(!$db){ die("Unable to select database"); } //Create Insert query $query = "INSERT INTO PLAYERS (PLAYERNO, NAME, INITIALS, BIRTH_DATE, SEX, JOINED, STREET, HOUSENO, POSTCODE, TOWN, PHONENO, LEAGUENO) VALUES ($playerNo, $name, $initials, $dob, $sex, $joined, $street, $houseNo, $postcode, $town, $phoneNo, $leagueNo)"; //Execute query $results = mysqli_query($link, $query); //Check if query executes successfully if($results == FALSE) echo mysqli_error($link) . '<br>'; else echo 'Data inserted successfully! '; } } // Code to be executed when 'Update' is clicked. if ($_POST['submit'] == 'Update'){ if(!$_POST['playerNo']) echo 'Enter the number of the player as it is the primary key.'; else{ $validationFlag = true; $playerNo = $_POST['playerNo']; $update = "UPDATE PLAYERS SET PLAYERNO = $playerNo";
+if($_POST['lastName']){ $lastName = $_POST['lastName']; $update = $update . ", NAME = '$lastName'"; } if($_POST['initials']){ $initials = $_POST['initials']; $update = $update . ", INITIALS = '$initials'"; } if($_POST['month'] || $_POST['day'] || $_POST['year']) { if(checkdate($_POST['month'],$_POST['day'],$_POST['year'])) { $dob = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day']; $update = $update . ", BIRTH_DATE = '$dob'"; } else{ echo 'Entered DOB is invalid.<br>'; $validationFlag = false; } } if(isset($_POST['sex'])){ $sex = $_POST['sex']; $update = $update . ", SEX = '$sex'"; } if($_POST['joined']){ $joined = $_POST['joined']; $update = $update . ", JOINED = '$joined'"; } if($_POST['street']){ $street = $_POST['street']; $update = $update . ", STREET = '$street'"; } if($_POST['houseNo']){ $houseNo = $_POST['houseNo']; $update = $update . ", HOUSENO = '$houseNo'"; } if($_POST['postcode']){ $postcode = $_POST['postcode']; $update = $update . ", POSTCODE = '$postcode'"; } if($_POST['town']){ $town = $_POST['town']; $update = $update . ", TOWN = '$town'"; } if($_POST['phoneNo']){ $phoneNo = $_POST['phoneNo']; $update = $update . ", PHONENO = '$phoneNo'"; }
+if($_POST['leagueNo']){ $leagueNo = $_POST['leagueNo']; $update = $update . ", LEAGUENO = '$leagueNo'"; } $update = $update . " WHERE PLAYERNO = $playerNo"; //If all validations are correct, connect to MySQL and execute the query if($validationFlag){ //Connect to mysql server $link = mysqli_connect('dbms.iiitdmj.ac.in', 'username', 'password'); //Check link to the mysql server if(!$link){ die('Failed to connect to server: ' . mysqli_error()); } //Select database $db = mysqli_select_db($link, 'yourdatabase'); if(!$db){ die("Unable to select database"); } //Execute query $results = mysqli_query($link, $update); if($results == FALSE) echo mysqli_error($link) . '<br>'; else echo mysqli_info($link); } } } // Code to be executed when 'Delete' is clicked. if ($_POST['submit'] == 'Delete'){ if(!$_POST['playerNo']) echo 'Enter the number of the player as it is the primary key.'; else{ $playerNo = $_POST['playerNo']; $delete = "DELETE FROM PLAYERS WHERE PLAYERNO = $playerNo"; //Connect to mysql server $link = mysqli_connect('dbms.iiitdmj.ac.in', 'username', 'password'); //Check link to the mysql server if(!$link){ die('Failed to connect to server: ' . mysqli_error()); } //Select database $db = mysqli_select_db($link,'yourdatabase'); if(!$db){ die("Unable to select database"); }
+//Execute query $results = mysqli_query($link, $delete); if($results == FALSE) echo mysqli_error($link) . '<br>'; else echo 'Data deleted successfully'; } } } else{ header('location:login_form.php'); exit(); } ?>

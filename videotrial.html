@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> When it's shopping,U can't say no! </title>
+<script type="text/javascript" src="annyang.min.js"></script>
+
+<style type="text/css">
+  *{
+      margin:1;
+	  padding:1;
+  }
+body{
+
+ font-family: Calibri,serif;
+}
+
+.vide{
+   position:fixed;
+   z-index:-1000;
+   width:100%;
+   height:100%;
+   overflow:hidden;
+   top:0;
+   left:0;
+}
+
+#vid1{
+
+ position:absolute;
+ min-height:100%;
+ min-width:100%;
+ top:0;
+ left:0;
+}
+
+.content{
+  position:absolute;
+  min-height:100%;
+  width:100%;
+  z-index:1000;
+  background-color: rgba(0,0,0,0.6);
+  
+  }
+  
+ .content h1{
+   text-align:center;
+   font-size:65px;
+   text-transform:uppercase;
+   font-weight:300;
+   color:#fff;
+   padding-top:15%;
+   margin-bottom:10px;
+ 
+ } 
+
+.content p{
+   text-align:center;
+   color:#aaa;
+   letter-spacing:3px;
+   font-size:20px;
+
+}
+a{
+ align:center;
+ color:#fff;
+ font-style:Calibri,sans-serif;
+ letter-spacing:2px;
+ text-decoration:none;
+ font-size:25px;
+ background-color:#665200;
+ line-height:20px;
+ padding-left:2px;
+ padding-right:2px;
+ }
+center{
+padding:20px;
+}
+a:hover{ 
+  background-color:black;
+} 
+
+.btn-push {
+  position: relative;
+  top: 0px;
+  font-family: Calibri,sans-serif;
+  text-decoration: none;
+  font-size: 25px;
+  background: #f7f7f7;
+  padding: 15px 50px;
+  margin: 0 10px;
+  border: 1px solid #c4c4c4;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 0px #c4c4c4;
+  -moz-box-shadow: 0px 5px 0px #c4c4c4;
+  -ms-box-shadow: 0px 5px 0px #c4c4c4;
+  -o-box-shadow: 0px 5px 0px #c4c4c4;
+  box-shadow: 0px 5px 0px #c4c4c4;
+  color: #222;
+  text-shadow: 1px 1px 1px #fff;
+  -webkit-transition: All 250ms ease;
+  -moz-transition: All 250ms ease;
+  -o-transition: All 250ms ease;
+  -ms-transition: All 250ms ease;
+  transition: All 250ms ease;
+}
+/*==========  Active State  ==========*/
+.btn-push:active {
+  position: relative;
+  top: 5px;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -ms-box-shadow: none !important;
+  -o-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-transition: All 250ms ease;
+  -moz-transition: All 250ms ease;
+  -o-transition: All 250ms ease;
+  -ms-transition: All 250ms ease;
+  transition: All 250ms ease;
+}
+/*==========  Navy  ==========*/
+.btn-push.red {
+  background:#800000;
+   border: 1px solid #4d0000;
+  
+  color: #fff;
+ 
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 0px #4d0000;
+  -moz-box-shadow: 0px 5px 0px #4d0000;
+  -ms-box-shadow: 0px 5px 0px #4d0000;
+  -o-box-shadow: 0px 5px 0px #4d0000;
+  box-shadow: 0px 5px 0px #4d0000;
+  text-shadow: 1px 1px 1px #4d0000;
+  
+  }
+
+  
+
+ 
+</style>
+</head>
+
+<body>
+
+<div class="vide">
+<video id="vid1" preload="auto" autoplay="true" loop="loop" muted="muted">
+<source src="Light Rain - FREE Video Background Loop HD 1080p.mp4" type="video/mp4">
+ Otherwise Video not supported.
+</video>
+</div>
+<div class="content">
+<h1> WELCOME TO <strong>SHOP'A HOLIC</strong> </h1>
+<p> STAY HUNGRY ! STAY FASHIONISTA ! </p>
+<p>If loving fashion is crime, we plead guilty!</p>
+<center>
+    
+    <a href="front.html" class="btn-push red">Explore the Awesomeness!</a>
+</center>
+
+</div>
+
+
+</body>
+</html>

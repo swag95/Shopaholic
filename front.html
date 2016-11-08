@@ -1,0 +1,270 @@
+<html>
+
+<head>
+
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Shopa-Shopa</title>
+
+
+<script type="text/javascript">
+var imagecount=1;
+var total=12;
+
+var myimage=document.getElementById('img');
+var imageArray=["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg"];
+var imageindex=0;
+function changeimage(){
+   img.setAttribute("src",imageArray[imageindex]);
+   imageindex++;
+   if(imageindex>=imageArray.length){
+   imageindex=0;
+   }
+   }
+  var intervalHandle= setInterval(changeimage,2000);
+  img.onclick=function(){
+   clearInterval(intervalHandle);
+   }
+
+function slide(x){
+ var Image=document.getElementById('img');
+ imagecount=imagecount+x;
+ if(imagecount>total){
+		imagecount=1;}
+  if(imagecount<1){
+		imagecount=total;}
+	Image.src=imagecount+".jpg";
+ 
+}
+window.setInterval(function slide(x){
+var Image=document.getElementById('img');
+ imagecount=imagecount+x;
+ if(imagecount>total){
+		imagecount=1;}
+  if(imagecount<1){
+		imagecount=total;}
+	Image.src=imagecount+".jpg";
+ },20000);
+
+</script>
+
+<script src="annyang.min.js"></script>
+<script>
+
+</script>
+
+
+<!--<script>
+function parsesearch(){
+	alert("Allow browser to use microphone?");
+var commands = {
+
+
+	'hello' : showBubble
+
+  // annyang will capture anything after a splat (*) and pass it to the function.
+
+  // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
+
+//  'show me *term': showFlickr,
+
+ 
+
+  // A named variable is a one word variable, that can fit anywhere in your command.
+
+  // e.g. saying "calculate October stats" will call calculateStats('October');
+
+  //'calculate :month stats': calculateStats,
+
+ 
+
+  // By defining a part of the following command as optional, annyang will respond to both:
+
+  // "say hello to my little friend" as well as "say hello friend"
+
+  //'say hello (to my little) friend': greeting
+
+  
+  
+  
+  
+  
+};
+
+ 
+ 
+ if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  
+  console.log(commands);
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+
+
+var showBubble  = function() {
+	
+	alert("hello_text");
+
+}
+
+var showFlickr = function(term) {
+
+  var url = 'http://api.flickr.com/services/rest/?tags='+tag;
+
+  $.getJSON(url);
+
+}
+
+ 
+
+var calculateStats = function(month) {
+
+  $('#stats').text('Statistics for '+month);
+
+}
+
+ 
+
+var greeting = function() {
+
+  $('#greeting').text('Hello!');
+
+}
+
+ 
+}
+</script>
+
+
+-->
+
+ 
+ </head>
+<body>
+
+
+
+<header>
+	<div class="logo">
+   <a href="front.html" style="px;float:right;margin:right=0;margin-top:0"> Sh&hearts;paholic  </a>
+  </div>
+  
+  <link rel="stylesheet" href="speech-input.css">
+<style>
+.si-wrapper input {
+	font-size: 2em;
+	padding: .1em;
+}
+</style>
+  
+  <div class="menu">
+
+  <nav>
+	<ul>
+	   
+	    <li>
+		<form method="post" action ="result.php" enctype="multipart/form-data">
+		<div class="si-wrapper">
+	<input type="text" name="user_query" class="si-input" placeholder="What's up?"  size="20px" style="font-size:150%"/>
+	<button class="si-btn">
+		speech input
+		<span class="si-mic"></span>
+		<span class="si-holder"></span>
+	</button>
+	
+</div>
+<input type="submit" name="search" value="search" style="top:5px;background-color:#c1f0c1;"/>
+<script src="speech-input.js"></script></li>
+			
+		<!--<input type="text" name="user_query" placeholder="Just get Lost in Fashion......" id='search-text-input'/>-->
+		
+		
+
+    <!--<center><input type="image" onClick="doSearch(this.form.Query);return false;" name="search" src="searchimage.png" border="0" alt="Submit" /></center></li></form>
+  <center><img src='searchimage.png' /></center></li></form>-->
+		
+		&nbsp <li ><a href="customregi.php" style="margin-top:15px">Login/Register</a></li>
+		
+	
+		<li><a href="sellerlogin.html">Sell here!</a></li>
+	<!-- tton onclick="javascript:parsesearch() return false;">search </button> -->
+		
+		
+		
+	</ul>
+   </nav>
+</div> 
+</header> 
+
+
+	<div id="menu1" style="margin-top:10%">
+	   <ul>
+	        
+		   <li><a href="electronics.html" style="color:#fff">&#8487; Electronics</a></li>
+		   <li><a href="men.html" style="color:#fff">&#9794; Men</a></li>
+		   <li><a href="women.html" style="color:#fff">&#9792; Women</a></li>
+		   <li><a href="kids.html" style="color:#fff">☺ Kids</a></li>
+		   <li><a href="books.html" style="color:#fff">▤ Books</a></li>
+		   		   <li><a href="contact.html" style="color:#fff">Contact us:</a></li>
+
+		 </ul>
+		 </div>
+		 <img src="side.png" style="height:260px;width:300px;float:right;margin-top:-400px;"/>
+		 <img src="side1.png" style="height:260px;width:300px;float:right;margin-top:-135px;"/>
+		 
+		 
+		 
+<div id="container">
+<img src="1.jpg" id="img"/>
+<div id="leftholder"><img onClick="slide(-1)" class="left" style="opacity:0.4" src="left.png"/></div>
+<div id="rightholder"><img onClick="slide(1)" class="right" style="opacity:0.4" src="right.png"/></div>
+
+</div>
+ <img src="down.png" style="height:450px;width:1340px;margin-top:-340px"/>
+
+<table id="cont" align="center" cellpadding="8"><tr><td>
+<div class="first">
+<center><img src="check.png" height="60" width="50" style="opacity:0.5"></center>
+<center><h2><a href="#">Great Deals</h2>
+<h3>SATISFACTION GUARANTEED</h3>
+<h3>100%</h3></center>
+
+</div></td>
+<td><div class="second">
+<center><img src="gift.jpg" height="60" width="50" style="opacity:0.5"></center>
+<center><h2><a href="#">Delivered to you in 7 days</h2>
+<h3>FREE SHIPPING ON ALL ORDERS</h3></center>
+</div></td>
+<td><div class="third">
+<center><img src="check2.jpg" height="60" width="50" style="opacity:0.5"></center>
+<center><h2><a href="#">In case you need help</h2>
+<a href="contact.html"><h3>Contact us</h3></a>
+<a href="#" style="#fff"><h3>Tel: 0124 4745 777 (9 am - 5 pm Mon-Sat)</h3></a></div></td>
+</tr></table>		 
+		 
+<footer>
+   <div class="copyright">	
+		<p>&copy: 2016 Copyright. All Rights Reserved</p>
+		
+</footer>		
+		
+</div>
+</body>
+</html>	
+
+
+	 
+	
+
+
+
+
+
+	
